@@ -1,88 +1,54 @@
-# Hardcore Skill Perm Advisor
+Hardcore Skill Perm Advisor
+A KoLmafia ASH script for Kingdom of Loathing that compares your character's permanently HC-permed skills against a curated priority list and advises what to perm next — including exactly how to get each skill.
+Based on The Ascension Speed Show's Hardcore (and Softcore) Standard Perm Tier List by Aenimus (#2273519) & Lyft (#3045223).
 
-A [KoLmafia](https://wiki.kolmafia.us/index.php/KoLmafia) ASH script for [Kingdom of Loathing](https://www.kingdomofloathing.com/) that compares your character's permanently permed skills against a curated priority list and advises what to perm next — including exactly how to get each skill.
+Features
 
-Based on **[The Ascension Speed Show's Hardcore (and Softcore) Standard Perm Tier List](https://docs.google.com/spreadsheets/d/1UG68Vl_5V-EqQXdyF2QMehdZ43Gh78pwD3R0UC_bky4/)** by Aenimus (#2273519) & Lyft (#3045223).
+Accurate HC perm detection — fetches your character sheet directly to identify only truly HC-permed skills, not just skills you currently have access to in-run
+Category menu — organises skills by what is bottlenecking your runs (essentials, turn gen, survivability, +item%, unrestricted highlights, and more)
+Priority order — follows the tier list's ascension order exactly, so you always work on the most impactful skill first
+Detailed advice — tells you how to get each skill (which class run and level, Dread Machine combo, PvP swagger cost, mall item price, IOTM cost, etc.)
+Cross-reference warnings — if you browse a specific category, the script warns you if there are higher-priority core ascension skills you have not done yet
+Full list mode — see every un-permed skill grouped by category
 
----
 
-## Features
+Requirements
 
-- **Category menu** — organises skills by what's bottlenecking your runs (turn gen, survivability, +item%, etc.)
-- **Priority order** — follows the tier list's ascension order exactly, so you always work on the most impactful skill first
-- **Detailed advice** — tells you *how* to get each skill (which class run and level, Dread Machine combo, PvP swagger cost, mall item price, etc.)
-- **Cross-reference warnings** — if you browse a specific category, the script warns you if there are higher-priority core ascension skills you haven't done yet
-- **Full list mode** — see every un-permed skill grouped by category
+KoLmafia (any recent version)
 
----
 
-## Requirements
+Installation
 
-- [KoLmafia](https://github.com/kolmafia/kolmafia/releases) (any recent version)
+Download HC_Perm_Advisor.ash
+Place it in your KoLmafia scripts/ folder
 
----
+The exact path can be found in KoLmafia under General → Preferences → Script location
 
-## Installation
 
-1. Download `HC_Perm_Advisor.ash`
-2. Place it in your KoLmafia `scripts/` folder
-   - The exact path can be found in KoLmafia under **General → Preferences → Script location**
 
----
 
-## Usage
-
+Usage
 Run commands from the KoLmafia gCLI (the command line at the bottom of the relay browser or desktop app).
-
-### Show the category menu
-```
+Show the category menu
 call HC_Perm_Advisor.ash
-```
-Displays all available categories and the full list of commands. Start here if you're not sure what to work on next.
-
-### Global top 5 by overall priority
-```
+Displays all available categories and the full list of commands. Start here if you are not sure what to work on next.
+Global top 5 by overall priority
 call HC_Perm_Advisor.ash top
-```
 Shows the next 5 skills to perm regardless of category — best if you just want to follow the list in order.
-
-### Browse a specific category
-```
+Browse a specific category
 call HC_Perm_Advisor.ash [number or keyword]
-```
-
-| Number | Keyword | Category |
-|--------|---------|----------|
-| 1 | `essentials` | Do these first, regardless of bottleneck |
-| 2 | `near` | Near-Essentials; strong universal skills |
-| 3 | `turngen` | Turn generation and crafting savings |
-| 4 | `substats` | Monster Level, substat gains, levelling |
-| 5 | `item` | +Item drop % |
-| 6 | `survive` | Survivability, healing, damage reduction |
-| 7 | `misc` | Miscellaneous utility skills |
-| 8 | `mp` | Max MP |
-| 9 | `meat` | +Meat % |
-| 10 | `init` | +Initiative % |
-| 11 | `marginal` | Expensive or low-gain skills |
-
-**Examples:**
-```
+NumberKeywordCategory0.5autoAuto-HC-perm skills (no ascension needed)1essentialsDo these first, regardless of bottleneck2nearNear-Essentials; strong universal skills3turngenTurn generation and crafting savings4substatsMonster Level, substat gains, levelling5item+Item drop %6surviveSurvivability, healing, damage reduction7miscMiscellaneous utility skills8mpMax MP9meat+Meat %10init+Initiative %11marginalFractional turn savers; marginal gains12unrestrictedNon-standard path highlights (not usable in Standard)
+Examples:
+call HC_Perm_Advisor.ash auto
 call HC_Perm_Advisor.ash 5
 call HC_Perm_Advisor.ash item
 call HC_Perm_Advisor.ash survive
-```
-
-### Full list of everything un-permed
-```
+call HC_Perm_Advisor.ash unrestricted
+Full list of everything un-permed
 call HC_Perm_Advisor.ash all
-```
 Shows all un-permed skills from the tier list, grouped by category in priority order.
 
----
-
-## Example Output
-
-```
+Example Output
 =============================================================
   Hardcore Skill Perm Advisor  --  5. +Item%
 =============================================================
@@ -102,57 +68,58 @@ Top 3 un-permed in this category (7 remaining):
    HOW TO GET : Play an Accordion Thief (AT) run. Skill unlocks at Level 7.
    WHY        : +20% item drops as an AT Song. Stack with Mad Looting Skillz for a large total item bonus.
 ...
-```
 
----
+Skill Coverage
+The script covers 154 skills across all 13 tier categories, including:
+Standard-legal skills:
 
-## Known Limitations
+Class run skills — all six classes (SC, DB, AT, PM, TT, SA) with the level required
+Dread Machine skills — class combos needed and Skull Capacitor cost (~3,500,000 meat)
+PvP swagger skills — which skillbook and approximate grind time
+Mall purchase skills — Hodgman's journals, approximate meat cost
+Dungeoneer's Association — fat loot token costs
+Bounty Hunter Hunter — filthy lucre cost and grind time estimate
+Slime Tube farming — Mother Slime drop notes
+Gnome Moon Sign / Melvign quest — Torso Awareness acquisition paths
+Spookyraven Manor skills — which manor area drops them
 
-### Mid-ascension accuracy
-The script uses KoLmafia's `have_skill()` function to detect permed skills. This works perfectly **between ascensions**, but during a run `have_skill()` also returns true for your current class's native skills — which means skills you haven't actually permed yet may appear as done.
+Unrestricted path highlights (Category 12):
 
-**Recommendation: run this script between ascensions for accurate results.** During a run it's still useful for the "how to get" advice, but the count of remaining skills will be lower than reality.
+LT&T skillbooks (Steely-Eyed Squint, Bend Hell, Bow-Legged Swagger)
+IOTM skills under 200M meat (Emotion Chip, Comprehensive Cartography, Bird-A-Day Calendar)
+Auto-HC-perming Fortune Teller, Neverending Party, and Crimbo skills
+Free kill and banish skills (Shattering Punch, Snokebomb, Gingerbread Mob Hit)
+Elemental resistance passives (Hypersane, Refusal to Freeze, Olfactory Burnout, etc.)
+Spacegate reward skills
 
-This is a known issue being worked on. If you know of a reliable KoLmafia ASH method to detect *only* permanently permed skills mid-run, please open an issue or pull request!
 
----
+Skills costing over 200M meat (Sweet Synthesis ~418M, Calculate the Universe ~500M) are noted in the category footer but not listed as recommendations.
 
-## Skill Coverage
 
-The script covers ~60 skills across all 11 tier categories from the tier list, including:
+How Perm Detection Works
+The script fetches your character sheet (charsheet.php) at startup and parses every skill marked as Hardcore Permanent (HP). This means:
 
-- **Class run skills** — all six classes (SC, DB, AT, PM, TT, SA), with the level required
-- **Dread Machine skills** — class combos needed and Skull Capacitor cost (~3,500,000 meat)
-- **PvP swagger skills** — which skillbook, approximate grind time
-- **Mall purchase skills** — Hodgman's journals, raffle prizes, approximate meat cost
-- **Dungeoneer's Association** — fat loot token costs
-- **Bounty Hunter Hunter** — filthy lucre cost and grind time estimate
-- **Slime Tube skills** — Mother Slime farming notes
-- **Gnome Moon Sign** — which sign and alternatives
+Works correctly mid-ascension — only skills you have actually HC-permed are marked as done, even if you currently have class skills available in-run
+Requires an active KoLmafia session — the script needs to be able to reach the KoL game server. If KoLmafia is busy auto-adventuring, wait for it to finish or stop automation before running
+Falls back gracefully — if the character sheet cannot be fetched, the script falls back to have_skill() detection and warns you that results may be inaccurate
 
----
 
-## Feedback & Contributing
+Feedback & Contributing
+This is a community tool and feedback from experienced ascenders is very welcome! If you find:
 
-This is an early version and feedback from experienced ascenders is very welcome! If you find:
+A skill that is missing or miscategorised
+Wrong priority ordering compared to the tier list
+A "how to get" description that is inaccurate or outdated
+Any ASH bugs or KoLmafia compatibility issues
+Skills whose mall prices have changed significantly
 
-- A skill that's missing or miscategorised
-- Wrong priority ordering
-- A "how to get" description that's inaccurate or outdated
-- A fix for the mid-ascension `have_skill()` limitation
-- Any ASH bugs or KoLmafia compatibility issues
+Please open an Issue or submit a Pull Request.
 
-Please open an **[Issue](../../issues)** or submit a **Pull Request**.
+Credits
 
----
+Tier list by Aenimus (#2273519) and Lyft (#3045223) — The Ascension Speed Show
+Script by deomcg85
 
-## Credits
 
-- Tier list by **Aenimus (#2273519)** and **Lyft (#3045223)** — [The Ascension Speed Show](https://discord.gg/tbUCRT5)
-- Script by **deomcg85**
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE) for details.
+License
+MIT — see LICENSE for details.
