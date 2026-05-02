@@ -9,25 +9,53 @@ Based on **[The Ascension Speed Show's Hardcore (and Softcore) Standard Perm Tie
 ## Features
 
 - **Accurate HC perm detection** — fetches your character sheet directly to identify only truly HC-permed skills, not just skills you currently have access to in-run
+- **Standard restriction warnings** — detects if you are in a Standard-restricted ascension and warns you; all 50 out-of-Standard 2025 skills are flagged in their How to Get text
 - **Category menu** — organises skills by what is bottlenecking your runs (essentials, turn gen, survivability, +item%, unrestricted highlights, and more)
 - **Priority order** — follows the tier list's ascension order exactly, so you always work on the most impactful skill first
-- **Detailed advice** — tells you *how* to get each skill (which class run and level, Dread Machine combo, PvP swagger cost, mall item price, IOTM cost, etc.)
+- **Detailed advice** — tells you exactly how to get each skill (which class run and level, Dread Machine combo, PvP swagger cost, mall item price, IOTM cost, etc.)
 - **Cross-reference warnings** — if you browse a specific category, the script warns you if there are higher-priority core ascension skills you have not done yet
 - **Full list mode** — see every un-permed skill grouped by category
+- **Easy installer** — one script fetches and installs everything automatically from GitHub
 
 ---
 
-## Requirements
+## When to Run This Script
 
-- [KoLmafia](https://github.com/kolmafia/kolmafia/releases) (any recent version)
+**Best time: aftercore, after freeing the king from the prism.**
+
+- All your HC perms will be fully visible on your character sheet
+- Standard restrictions do not apply in aftercore
+- The skill count will be accurate with nothing hidden or locked
+
+The script will still work mid-ascension — it fetches your character sheet directly so it reads your actual HC perms rather than just your current class skills. However:
+
+- If you are in a **Standard-restricted** ascension, the script will display a red warning and 50 skills will be flagged as `[OUT OF STANDARD 2025]` in their How to Get text — these cannot be acquired during a Standard run
+- **Expert Corner-Cutter** is a special case: the Disco Bandit class version (Level 9) is Standard-legal; only the LyleCo Contractor's Manual version is restricted
 
 ---
 
 ## Installation
 
-1. Download `HC_Perm_Advisor.ash`
+### Option A — Installer (recommended)
+
+1. Download `HC_Perm_Advisor_install.ash`
 2. Place it in your KoLmafia `scripts/` folder
-   - The exact path can be found in KoLmafia under **General → Preferences → Script location**
+3. Run it once from the gCLI:
+```
+call HC_Perm_Advisor_install.ash
+```
+This automatically downloads and saves both `HC_Perm_Advisor.ash` and `HC_Perm_Advisor_data.ash` into your scripts folder. Run the installer again any time you want to update to the latest version.
+
+### Option B — Manual download
+
+Download all three files and place them in your KoLmafia `scripts/` folder:
+- `HC_Perm_Advisor_install.ash`
+- `HC_Perm_Advisor.ash`
+- `HC_Perm_Advisor_data.ash`
+
+> **Note:** `HC_Perm_Advisor.ash` and `HC_Perm_Advisor_data.ash` must both be present in the same scripts folder. The main script will not run without the data file.
+
+The scripts folder location can be found in KoLmafia under **General → Preferences → Script location**.
 
 ---
 
@@ -83,6 +111,12 @@ call HC_Perm_Advisor.ash all
 ```
 Shows all un-permed skills from the tier list, grouped by category in priority order.
 
+### Update to latest version
+```
+call HC_Perm_Advisor_install.ash
+```
+Re-runs the installer to fetch and overwrite both files with the latest version from GitHub.
+
 ---
 
 ## Example Output
@@ -111,6 +145,16 @@ Top 3 un-permed in this category (7 remaining):
 
 ---
 
+## File Structure
+
+| File | Purpose |
+|------|---------|
+| `HC_Perm_Advisor_install.ash` | Run once to install or update. Fetches the other two files from GitHub automatically. |
+| `HC_Perm_Advisor.ash` | Main script — all logic, display, and perm detection. ~383 lines. |
+| `HC_Perm_Advisor_data.ash` | Skill database — all 154 skills with priority, source, and notes. ~855 lines. Edit this file to add or change skills. |
+
+---
+
 ## Skill Coverage
 
 The script covers **154 skills** across all 13 tier categories, including:
@@ -136,27 +180,31 @@ The script covers **154 skills** across all 13 tier categories, including:
 
 > Skills costing over 200M meat (Sweet Synthesis ~418M, Calculate the Universe ~500M) are noted in the category footer but not listed as recommendations.
 
+**50 of the 154 skills are Out of Standard 2025** and are flagged with `[OUT OF STANDARD 2025]` in their How to Get text. These can still be HC-permed in unrestricted or non-Standard paths.
+
 ---
 
 ## How Perm Detection Works
 
-The script fetches your character sheet (`charsheet.php`) at startup and parses every skill marked as Hardcore Permanent (`HP`). This means:
+The script fetches your character sheet (`charsheet.php`) at startup and parses every skill marked as Hardcore Permanent. This means:
 
 - **Works correctly mid-ascension** — only skills you have actually HC-permed are marked as done, even if you currently have class skills available in-run
-- **Requires an active KoLmafia session** — the script needs to be able to reach the KoL game server. If KoLmafia is busy auto-adventuring, wait for it to finish or stop automation before running
+- **Requires an active KoLmafia session** — if KoLmafia is busy auto-adventuring, wait for it to finish or stop automation before running
+- **Detects Standard restrictions** — reads your current path from the KoL API and warns you if you are in a Standard-restricted run
 - **Falls back gracefully** — if the character sheet cannot be fetched, the script falls back to `have_skill()` detection and warns you that results may be inaccurate
 
 ---
 
-## Feedback & Contributing
+## Contributing
 
-This is a community tool and feedback from experienced ascenders is very welcome! If you find:
+Skill data lives entirely in `HC_Perm_Advisor_data.ash`, which is kept separate from the logic on purpose — if you want to add a skill, fix a priority, or update a mall price, that is the only file you need to touch.
 
+If you find:
 - A skill that is missing or miscategorised
 - Wrong priority ordering compared to the tier list
-- A "how to get" description that is inaccurate or outdated
+- A How to Get description that is inaccurate or outdated
 - Any ASH bugs or KoLmafia compatibility issues
-- Skills whose mall prices have changed significantly
+- Standard restriction list changes for 2026
 
 Please open an **[Issue](../../issues)** or submit a **Pull Request**.
 
