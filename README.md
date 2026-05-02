@@ -15,7 +15,6 @@ Based on **[The Ascension Speed Show's Hardcore (and Softcore) Standard Perm Tie
 - **Detailed advice** — tells you exactly how to get each skill (which class run and level, Dread Machine combo, PvP swagger cost, mall item price, IOTM cost, etc.)
 - **Cross-reference warnings** — if you browse a specific category, the script warns you if there are higher-priority core ascension skills you have not done yet
 - **Full list mode** — see every un-permed skill grouped by category
-- **Easy installer** — one script fetches and installs everything automatically from GitHub
 
 ---
 
@@ -36,26 +35,23 @@ The script will still work mid-ascension — it fetches your character sheet dir
 
 ## Installation
 
-### Option A — Installer (recommended)
-
-1. Download `HC_Perm_Advisor_install.ash`
-2. Place it in your KoLmafia `scripts/` folder
-3. Run it once from the gCLI:
+1. Download both files from this repository:
+   - `HC_Perm_Advisor.ash`
+   - `HC_Perm_Advisor_data.ash`
+2. Place **both** files in your KoLmafia `scripts/` folder
+   - On Mac: `/Users/[yourname]/Library/Application Support/KoLmafia/scripts/`
+   - On Windows: usually `C:\Users\[yourname]\KoLmafia\scripts\`
+   - Or check the exact location in KoLmafia under **General → Preferences → Script location**
+3. Run it from the KoLmafia gCLI:
 ```
-call HC_Perm_Advisor_install.ash
+call HC_Perm_Advisor.ash
 ```
-This automatically downloads and saves both `HC_Perm_Advisor.ash` and `HC_Perm_Advisor_data.ash` into your scripts folder. Run the installer again any time you want to update to the latest version.
 
-### Option B — Manual download
+> **Both files must be present in the same scripts folder.** The main script will not run without the data file.
 
-Download all three files and place them in your KoLmafia `scripts/` folder:
-- `HC_Perm_Advisor_install.ash`
-- `HC_Perm_Advisor.ash`
-- `HC_Perm_Advisor_data.ash`
+### Updating
 
-> **Note:** `HC_Perm_Advisor.ash` and `HC_Perm_Advisor_data.ash` must both be present in the same scripts folder. The main script will not run without the data file.
-
-The scripts folder location can be found in KoLmafia under **General → Preferences → Script location**.
+To update to the latest version, download both files again from this page and overwrite the existing ones in your scripts folder.
 
 ---
 
@@ -111,12 +107,6 @@ call HC_Perm_Advisor.ash all
 ```
 Shows all un-permed skills from the tier list, grouped by category in priority order.
 
-### Update to latest version
-```
-call HC_Perm_Advisor_install.ash
-```
-Re-runs the installer to fetch and overwrite both files with the latest version from GitHub.
-
 ---
 
 ## Example Output
@@ -149,7 +139,6 @@ Top 3 un-permed in this category (7 remaining):
 
 | File | Purpose |
 |------|---------|
-| `HC_Perm_Advisor_install.ash` | Run once to install or update. Fetches the other two files from GitHub automatically. |
 | `HC_Perm_Advisor.ash` | Main script — all logic, display, and perm detection. ~383 lines. |
 | `HC_Perm_Advisor_data.ash` | Skill database — all 154 skills with priority, source, and notes. ~855 lines. Edit this file to add or change skills. |
 
@@ -197,13 +186,14 @@ The script fetches your character sheet (`charsheet.php`) at startup and parses 
 
 ## Contributing
 
-Skill data lives entirely in `HC_Perm_Advisor_data.ash`, which is kept separate from the logic on purpose — if you want to add a skill, fix a priority, or update a mall price, that is the only file you need to touch.
+Skill data lives entirely in `HC_Perm_Advisor_data.ash`, kept separate from the logic on purpose — if you want to add a skill, fix a priority, or update a mall price, that is the only file you need to touch.
 
 If you find:
 - A skill that is missing or miscategorised
 - Wrong priority ordering compared to the tier list
 - A How to Get description that is inaccurate or outdated
 - Any ASH bugs or KoLmafia compatibility issues
+- Skills whose mall prices have changed significantly
 - Standard restriction list changes for 2026
 
 Please open an **[Issue](../../issues)** or submit a **Pull Request**.
