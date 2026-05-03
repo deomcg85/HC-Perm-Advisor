@@ -195,23 +195,75 @@ void show_top(SkillData[int] needed) {
     int total = count(needed);
     print("", "");
     print("=============================================================", "blue");
-    print("  Hardcore Skill Perm Advisor  --  Global Top 5", "blue");
+    print("  Hardcore Skill Perm Advisor  --  Global Top Recommendations", "blue");
     print("=============================================================", "blue");
     print("", "");
+
     if (total == 0) {
         print("You have permed everything on the tier list!", "green");
         return;
     }
-    int display = min(5, total);
-    print("Showing " + display + " of " + total + " un-permed skills:", "black");
+
+    // Walk the full priority-sorted list and assign global rank numbers.
+    // Dread skills are separated into their own section but keep their
+    // global rank so the user can see where they sit in the overall order.
+    // e.g. if Dread skills are #2 and #4 overall, they display as #2 and #4.
+
+    SkillData[int] dread_skills;
+    int[int]       dread_ranks;
+    SkillData[int] solo_skills;
+    int[int]       solo_ranks;
+    int dcount = 0;
+    int scount = 0;
+    int rank    = 1;
+
+    foreach i, sd in needed {
+        if (index_of(sd.how_to_get, "Dread skill") >= 0) {
+            dread_skills[dcount] = sd;
+            dread_ranks[dcount]  = rank;
+            dcount += 1;
+        } else {
+            solo_skills[scount] = sd;
+            solo_ranks[scount]  = rank;
+            scount += 1;
+        }
+        rank += 1;
+    }
+
+    // Show top 5 solo skills with their global rank numbers
+    print("Top skills (solo -- no class coordination needed):", "black");
     print("", "");
-    for i from 0 to display - 1 {
-        print_skill(i + 1, needed[i]);
+    if (scount == 0) {
+        print("All remaining skills are Dread skills!", "green");
+    } else {
+        int sdisplay = min(5, scount);
+        for i from 0 to sdisplay - 1 {
+            print_skill(solo_ranks[i], solo_skills[i]);
+        }
+        if (scount > 5) {
+            print("... and " + (scount - 5) + " more solo skills remaining.", "gray");
+            print("Run 'call HC_Perm_Advisor.ash all' for the full list.", "gray");
+        }
     }
-    if (total > 5) {
-        print("... and " + (total - 5) + " more.", "gray");
-        print("Run 'call HC_Perm_Advisor.ash all' for the full list.", "gray");
+
+    // Show top 3 Dread skills with their global rank numbers
+    if (dcount > 0) {
+        print("", "");
+        print("-------------------------------------------------------------", "blue");
+        print("  Dread skills -- global rank shown, class coordination needed", "blue");
+        print("-------------------------------------------------------------", "blue");
+        print("", "");
+        int ddisplay = min(3, dcount);
+        for i from 0 to ddisplay - 1 {
+            print_skill(dread_ranks[i], dread_skills[i]);
+        }
+        if (dcount > 3) {
+            print("... and " + (dcount - 3) + " more Dread skills remaining.", "gray");
+        }
     }
+
+    print("", "");
+    print("Total un-permed: " + total + " (" + scount + " solo, " + dcount + " Dread)", "gray");
 }
 
 // ---- SHOW: CATEGORY ----------------------------------------

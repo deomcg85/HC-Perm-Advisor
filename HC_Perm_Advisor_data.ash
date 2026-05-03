@@ -138,9 +138,9 @@ void build_skill_db() {
         "+2 scrumptious reagents/day plus unlocks additional recipes. More Milk of Magnesium and more saucy food per day."
     );
     add("Expert Corner-Cutter", "Expert Corner-Cutter",
-        "1. Essentials", 11,
-        "Play a Disco Bandit (DB) run. Skill unlocks at Level 9. NOTE: The DB class version is Standard-legal. The LyleCo Contractor Manual version is Out of Standard 2025.",
-        "Saves 1 turn per 5 crafting actions. Very valuable if you craft food, booze, and reagents every day."
+        "3. Turn-Gen", 40,
+        "[OUT OF STANDARD 2025] Buy the LyleCo Contractor Manual from the mall (~1,500,000 meat). This is the only source of this skill -- there is no class run version.",
+        "5 free crafts/day (passive). Excellent if you cook reagent pastas and AC/SHCs daily. Saves crafting turns for milk of magnesium, potions, unstable fulminate, and more. Used after Inigo and Rapid Prototyping."
     );
     add("Torso Awareness", "Torso Awareness",
         "4. Substats", 12,
@@ -851,6 +851,698 @@ void build_skill_db() {
         "12. Unrestricted", 258,
         "[OUT OF STANDARD 2025] Buy Love Potions and the Wizards who Mix Them Fortune Teller skillbook from the mall (~750,000 meat). Auto-HC perms.",
         "Summons a Love Potion #XYZ (50 MP). Potions give random +/- stats, max HP, and max MP. The random nature makes them mostly unreliable, but occasionally excellent on Turn 1."
+    );
+
+    // ── CATEGORY 4 ADDITIONS: Facial Expression Substats ────────
+    // Patient Smile and Wry Smile complete the facial expression trio
+    // alongside Knowing Smile (already in DB at priority 52)
+
+    add("Patient Smile", "Patient Smile (Muscle facial expression)",
+        "4. Substats", 54,
+        "Play a Turtle Tamer (TT) run. Skill unlocks at Level 14.",
+        "+1 Muscle substat/combat. Perm if you primarily run Muscle-class ascensions. Facial expressions are mutually exclusive -- only one active at a time."
+    );
+    add("Wry Smile", "Wry Smile (Mysticality facial expression)",
+        "4. Substats", 55,
+        "Play a Sauceror (SA) run. Skill unlocks at Level 13.",
+        "+1 Mysticality substat/combat. Perm if you primarily run Mysticality-class ascensions. Facial expressions are mutually exclusive -- only one active at a time."
+    );
+
+    // ── CATEGORY 6 ADDITIONS: Gnome Skills ──────────────────────
+    // Gnome moon sign skills -- obtained from underground Gnomish areas
+
+    add("Powers of Observatiogn", "Powers of Observatiogn",
+        "6. Survivability", 79,
+        "Use the Mongoose moon sign when ascending. Unlocks from the Gnomish Loathing underground area.",
+        "+25% item drops (passive). Misspelling is intentional -- it is how KoL names the skill. A solid passive item bonus from the Gnome moon path."
+    );
+    add("Gnefarious Pickpocketing", "Gnefarious Pickpocketing",
+        "6. Survivability", 79,
+        "Use the Wombat moon sign when ascending. Unlocks from the Gnomish Loathing underground area.",
+        "+10% pickpocket chance (passive). Misspelling intentional. Useful alongside Sensitive Fingers and Master Accordion Master Thief for pickpocket builds."
+    );
+    add("Gnomish Hardigness", "Gnomish Hardigness",
+        "6. Survivability", 79,
+        "Use the Vole moon sign when ascending. Unlocks from the Gnomish Loathing underground area.",
+        "+15 max HP (passive). Misspelling intentional. Solid early survivability boost from the Gnome moon path."
+    );
+    add("Cosmic Ugnderstanding", "Cosmic Ugnderstanding",
+        "4. Substats", 56,
+        "Use a Gnome moon sign (Mongoose, Wombat, or Vole) when ascending. Unlocks from the Gnomish Loathing underground area.",
+        "+10% Mysticality substats (passive). Misspelling intentional. Good substat boost for Mysticality-class runs."
+    );
+
+    // ── CATEGORY 6: Class Combat Skill Groups ───────────────────
+    // These grouped entries cover all remaining class skills not
+    // already tracked individually. The representative kol_name
+    // is a high-level skill from each class used for perm detection.
+    // If you have not yet played that class to max level, the group
+    // will show as un-permed.
+
+    add("Cavalcade of Fury", "Seal Clubber Combat Skills (grouped)",
+        "6. Survivability", 150,
+        "Play a Seal Clubber (SC) run and level up fully. Covers all remaining SC class skills: Thrust-Smack, Lunge Smack, Lunging Thrust-Smack, Clobber, Harpoon!, Blubber Up, Fortitude of the Muskox, Audacity of the Otter, Claws of the Walrus, Batter Up!, Cold Shoulder, Wrath of the Wolverine, Buoyancy of the Beluga, Scowl of the Auk, Furious Wallop, Club Foot, Seething of the Snow Leopard, Ire of the Orca, Thirst of the Weasel, Cavalcade of Fury, Precision of the Penguin, Silent Hunter, Holiday Weight Gain, Iron Palm Technique, Hibernate.",
+        "Full suite of SC combat and passive skills. Many are combat-only but some give useful passives. Perm detection uses Cavalcade of Fury (Level 15) as proxy for class completion."
+    );
+    add("Quiet Determination", "Turtle Tamer Combat Skills (grouped)",
+        "6. Survivability", 151,
+        "Play a Turtle Tamer (TT) run and level up fully. Covers all remaining TT class skills: Patience of the Tortoise, Headbutt, Shieldbutt, Kneebutt, Reptilian Fortitude, Tenacity of the Snapper, Hero of the Half-Shell, Spectral Snapper, Toss, Summon Leviatuga, Jingle Bells, Spirit Vacation, Stiff Upper Lip, Blessing of the War Snapper, Spirit Snap, Blessing of She-Who-Was, Butts of Steel, Pizza Lover, Blessing of the Storm Tortoise, Spirit Boon, Turtle Power, Quiet Determination.",
+        "Full suite of TT combat and spirit skills. Includes spirit blessings, shell buffs, and familiar-related passives. Perm detection uses Quiet Determination (high level TT) as proxy."
+    );
+    add("Blood Bucatini", "Pastamancer Combat Skills (grouped)",
+        "6. Survivability", 152,
+        "Play a Pastamancer (PM) run and level up fully. Covers all remaining PM class skills: Manicotti Meditation, Ravioli Shurikens, Entangling Noodles, Cannelloni Cannon, Stuffed Mortar Shell, Weapon of the Pastalord, Lasagna Bandages, Spirit of Rigatoni, Fearful Fettucini, Spaghetti Spear, Tempuramancy, Candyblast, Stringozzi Serpent, Utensil Twist, Transcendent Al Dente, all Bind Thrall skills (Bind Vampieroghi, Bind Vermincelli, Bind Angel Hair Wisp, Bind Undead Elbow Macaroni, Bind Penne Dreadful, Bind Lasagmbie, Bind Spice Ghost, Bind Spaghetti Elemental), Arched Eyebrow of the Archmage, Bringing Up the Rear, Shield of the Pastalord, Thrall Unit Tactics, Subtle and Quick to Anger, Wizard Squint, Quiet Judgement, Blood Bucatini.",
+        "Full suite of PM combat spells and thrall-binding skills. Includes all 8 thrall bind skills which summon pasta-themed undead companions. Perm detection uses Blood Bucatini (high level PM) as proxy."
+    );
+    add("Sauce Monocle", "Sauceror Combat Skills (grouped)",
+        "6. Survivability", 153,
+        "Play a Sauceror (SA) run and level up fully. Covers all remaining SA class skills: Sauce Contemplation, Stream of Sauce, Jalapeño Saucesphere, Wave of Sauce, Intrinsic Spiciness, Master Saucier, Saucegeyser, Saucy Salve, Irrepressible Spunk, Salsaball, Deep Saucery, Surge of Icing, Curse of Vichyssoise, Simmer, Soul Saucery, Curse of Marinara, Curse of the Thousand Islands, Saucecicle, Antibiotic Saucesphere, Sauce Monocle, Silent Treatment.",
+        "Full suite of SA combat spells and sauce-themed skills. Many are combat damage spells or elemental attacks. Perm detection uses Sauce Monocle (high level SA) as proxy."
+    );
+    add("Blood Blade", "Disco Bandit Combat Skills (grouped)",
+        "6. Survivability", 154,
+        "Play a Disco Bandit (DB) run and level up fully. Covers all remaining DB class skills: Disco Aerobics, Disco Eye-Poke, Disco Dance of Doom, Disco Dance II: Electric Boogaloo, Disco Face Stab, Smooth Movement, Tango of Terror, Suckerpunch, Salacious Cocktailcrafting, Stealth Mistletoe, Deft Hands, Disco State of Mind, Frantic Gyrations, That's Not a Knife, Tricky Knifework, Flashy Dancer, Disco Smirk, Disco Greed, Knife in the Dark, Disco Bravado, Disco Shank, Disco Dance 3: Back in the Habit, Disco Inferno, Disco Leer, Silent Knife, Blood Blade.",
+        "Full suite of DB combat and dance skills. Includes various stab/dance attacks and passive bonuses. Perm detection uses Blood Blade (high level DB) as proxy."
+    );
+    add("Mild Curse", "Accordion Thief Combat Skills (grouped)",
+        "6. Survivability", 155,
+        "Play an Accordion Thief (AT) run and level up fully. Covers all remaining AT class skills: Moxie of the Mariachi, The Moxious Madrigal, The Power Ballad of the Arrowsmith, Brawnee's Anthem of Absorption, Jackasses' Symphony of Destruction, The Ballad of Richie Thingfinder, Benetton's Medley of Diversity, Elron's Explosive Etude, Chorale of Companionship, Prelude of Precision, Sing, Donho's Bubbly Ballad, Cringle's Curative Carol, Dissonant Riff, Cadenza, Crab Claw Technique, Accordion Bash, Accordion Appreciation, Concerto de los Muertos, Suspicious Gaze, Bawdy Refrain, Sticky Fingers, Cone of Zydeco, Quiet Desperation, Bram's Bloody Bagatelle, Mild Curse.",
+        "Full suite of AT songs and combat skills. Includes many AT Songs and combat abilities. Note: Ed the Undying is not recognised by KoLmafia and is excluded. Perm detection uses Mild Curse (high level AT) as proxy."
+    );
+
+    // ── CATEGORY 7 ADDITIONS: Misc Utility ──────────────────────
+
+    add("CLEESH", "CLEESH",
+        "7. Misc", 83,
+        "Obtained from the Gnomish Loathing underground area or certain other sources. Check the KoL wiki for current acquisition details.",
+        "Turns a monster into a newt, effectively banishing it without using a banish slot. A useful combat utility skill."
+    );
+    add("Summon Annoyance", "Summon Annoyance",
+        "7. Misc", 84,
+        "Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Summons a pile of Annoying French Canadians (items). Check wiki for current utility."
+    );
+    add("Pirate Bellow", "Pirate Bellow",
+        "7. Misc", 85,
+        "Obtained from a pirate-related source. Check the KoL wiki for current acquisition details.",
+        "Combat skill with pirate-themed effects. Check wiki for current utility."
+    );
+    add("Summon Holiday Fun!", "Summon Holiday Fun!",
+        "7. Misc", 86,
+        "Obtained from a holiday event source. Check the KoL wiki for current acquisition details.",
+        "Summons holiday-themed items. Check wiki for current utility and item details."
+    );
+    add("Summon Carrot", "Summon Carrot",
+        "7. Misc", 87,
+        "Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Summons carrots (familiars enjoy carrots). Check wiki for current utility."
+    );
+    add("Bear Essence", "Bear Essence",
+        "7. Misc", 88,
+        "Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Buff or combat skill with bear-themed effects. Check wiki for current utility."
+    );
+    add("Summon Kokomo Resort Pass", "Summon Kokomo Resort Pass",
+        "7. Misc", 89,
+        "Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Summons a Kokomo Resort Pass item. Check wiki for what the pass does and current utility."
+    );
+    add("Experience Safari", "Experience Safari",
+        "7. Misc", 90,
+        "Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Provides experience-related bonus. Check wiki for current utility."
+    );
+    add("Generate Irony", "Generate Irony",
+        "7. Misc", 91,
+        "Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Generates Irony (a special currency or resource). Check wiki for current utility and what Irony is used for."
+    );
+
+    // ── CATEGORY 11 ADDITIONS: More Dread Skills ────────────────
+    // These are the remaining Dread Machine skills not already in DB.
+    // All require coordinating two specific classes in a Dread run
+    // plus a Skull Capacitor (~3,500,000 meat, 3 uses).
+
+    add("Club Earth", "Club Earth",
+        "11. Marginal", 135,
+        "Dread skill -- from The Machine in Dreadsylvania. Requires a Skull Capacitor (~3,500,000 meat, 3 uses). Need a Seal Clubber AND Turtle Tamer in the same Dread run.",
+        "Deals earth-based damage in combat. Marginal combat damage skill."
+    );
+    add("Carbohydrate Cudgel", "Carbohydrate Cudgel",
+        "11. Marginal", 136,
+        "Dread skill -- from The Machine in Dreadsylvania. Requires a Skull Capacitor (~3,500,000 meat, 3 uses). Need a Turtle Tamer AND Pastamancer in the same Dread run.",
+        "Pasta-themed club attack. Marginal combat damage skill."
+    );
+    add("Song of the North", "Song of the North",
+        "11. Marginal", 137,
+        "Dread skill -- from The Machine in Dreadsylvania. Requires a Skull Capacitor (~3,500,000 meat, 3 uses). Need a Seal Clubber AND Accordion Thief in the same Dread run.",
+        "Cold-damage AT Song variant. Dread Songs are all mutually exclusive."
+    );
+    add("Turtleini", "Turtleini",
+        "11. Marginal", 138,
+        "Dread skill -- from The Machine in Dreadsylvania. Requires a Skull Capacitor (~3,500,000 meat, 3 uses). Need a Turtle Tamer AND Pastamancer in the same Dread run.",
+        "Pasta-turtle hybrid combat skill. Marginal combat damage."
+    );
+    add("Song of Slowness", "Song of Slowness",
+        "11. Marginal", 139,
+        "Dread skill -- from The Machine in Dreadsylvania. Requires a Skull Capacitor (~3,500,000 meat, 3 uses). Need an Accordion Thief AND Sauceror in the same Dread run.",
+        "Slows monster attack rate as an AT Song. Dread Songs are all mutually exclusive."
+    );
+    add("Shadow Noodles", "Shadow Noodles",
+        "11. Marginal", 140,
+        "Dread skill -- from The Machine in Dreadsylvania. Requires a Skull Capacitor (~3,500,000 meat, 3 uses). Need a Pastamancer AND Disco Bandit in the same Dread run.",
+        "Shadow-based noodle attack. Marginal combat damage skill."
+    );
+    add("Song of Starch", "Song of Starch",
+        "11. Marginal", 141,
+        "Dread skill -- from The Machine in Dreadsylvania. Requires a Skull Capacitor (~3,500,000 meat, 3 uses). Need a Pastamancer AND Accordion Thief in the same Dread run.",
+        "Starch-based AT Song. Dread Songs are all mutually exclusive."
+    );
+    add("Splashdance", "Splashdance",
+        "11. Marginal", 142,
+        "Dread skill -- from The Machine in Dreadsylvania. Requires a Skull Capacitor (~3,500,000 meat, 3 uses). Need an Accordion Thief AND Disco Bandit in the same Dread run.",
+        "Dance-based attack or AT Song. Dread Songs are all mutually exclusive."
+    );
+    add("Song of Sauce", "Song of Sauce",
+        "11. Marginal", 143,
+        "Dread skill -- from The Machine in Dreadsylvania. Requires a Skull Capacitor (~3,500,000 meat, 3 uses). Need a Sauceror AND Accordion Thief in the same Dread run.",
+        "Sauce-themed AT Song. Dread Songs are all mutually exclusive."
+    );
+
+    // Slime Tube - remaining skill
+    add("Slimy Shoulders", "Slimy Shoulders",
+        "11. Marginal", 144,
+        "Fight Mother Slime in the Slime Tube to collect slime-soaked shoulders drops. Each drop upgrades the skill, caps at 10 upgrades. Glands can be costly.",
+        "+1 Damage Absorption per upgrade (+10 DA total). Flat DA is useful early but less impactful than percentage bonuses."
+    );
+
+    // Silent skills from The Silent Treatment path / special sources
+    add("Silent Slam", "Silent Slam",
+        "11. Marginal", 145,
+        "Obtained from a special path or source. Check the KoL wiki for current acquisition details.",
+        "Silent combat skill -- deals damage without making noise. Check wiki for current utility."
+    );
+    add("Silent Squirt", "Silent Squirt",
+        "11. Marginal", 146,
+        "Obtained from a special path or source. Check the KoL wiki for current acquisition details.",
+        "Silent combat skill. Check wiki for current utility."
+    );
+    add("Silent Slice", "Silent Slice",
+        "11. Marginal", 147,
+        "Obtained from a special path or source. Check the KoL wiki for current acquisition details.",
+        "Silent combat skill. Check wiki for current utility."
+    );
+
+    // ── CATEGORY 12 ADDITIONS: Hobopolis / Clan Dungeon Skills ──
+    // These skills come from running the Hobopolis clan dungeon,
+    // which requires access to a premium VIP clan with Hobopolis unlocked.
+
+    add("Awesome Balls of Fire", "Awesome Balls of Fire",
+        "12. Unrestricted", 260,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked. Run the Hobopolis dungeon and defeat the relevant boss or complete the appropriate path.",
+        "Fire-based combat damage skill. Useful for elemental damage in unrestricted runs."
+    );
+    add("Conjure Relaxing Campfire", "Conjure Relaxing Campfire",
+        "12. Unrestricted", 261,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Conjures a campfire allowing free resting. HP and MP restoration without using a rest. Useful in unrestricted runs."
+    );
+    add("Snowclone", "Snowclone",
+        "12. Unrestricted", 262,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Cold-damage combat skill. Useful for cold elemental encounters in unrestricted."
+    );
+    add("Maximum Chill", "Maximum Chill",
+        "12. Unrestricted", 263,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Cold resistance or passive cold buff. Check wiki for current stats and utility."
+    );
+    add("Eggsplosion", "Eggsplosion",
+        "12. Unrestricted", 264,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Egg-based explosive combat skill. Check wiki for current damage and utility."
+    );
+    add("Mudbath", "Mudbath",
+        "12. Unrestricted", 265,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Heals HP and possibly provides a buff. Useful for survivability in unrestricted runs."
+    );
+    add("Grease Lightning", "Grease Lightning",
+        "12. Unrestricted", 266,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Initiative boost or grease-based combat skill. Check wiki for current stats."
+    );
+    add("Inappropriate Backrub", "Inappropriate Backrub",
+        "12. Unrestricted", 267,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Debuffs or damages a monster. Check wiki for current effects and utility."
+    );
+    add("Raise Backup Dancer", "Raise Backup Dancer",
+        "12. Unrestricted", 268,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Summons a backup dancer to assist in combat. Check wiki for current effects."
+    );
+    add("Creepy Lullaby", "Creepy Lullaby",
+        "12. Unrestricted", 269,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Puts a monster to sleep or provides a banish-like effect. Useful combat utility in unrestricted."
+    );
+    add("Wassail", "Wassail",
+        "12. Unrestricted", 270,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Healing skill. Restores HP in or out of combat. Useful for survivability in unrestricted runs."
+    );
+    add("Toynado", "Toynado",
+        "12. Unrestricted", 271,
+        "[OUT OF STANDARD 2025] Hobopolis clan dungeon skill. Requires a VIP clan with Hobopolis unlocked.",
+        "Summons a tornado of toys dealing damage. Combat skill useful for unrestricted."
+    );
+
+    // ── CATEGORY 12: Misc Spacegate / IotM Skills ───────────────
+
+    add("Chronic Indigestion", "Chronic Indigestion",
+        "12. Unrestricted", 272,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Passive skill that provides a bonus related to food or digestion. Check wiki for current effects."
+    );
+    add("Really Expensive Jewelrycrafting", "Really Expensive Jewelrycrafting",
+        "12. Unrestricted", 273,
+        "Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Allows crafting of expensive jewelry items. Check wiki for what items can be crafted and their value."
+    );
+    add("Rainbow Gravitation", "Rainbow Gravitation",
+        "12. Unrestricted", 274,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Gravity or rainbow-themed combat or utility skill. Check wiki for current effects."
+    );
+    add("Vent Rage Gland", "Vent Rage Gland",
+        "12. Unrestricted", 275,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Vents rage dealing damage or providing a combat effect. Check wiki for current utility."
+    );
+    add("Summon Crimbo Candy", "Summon Crimbo Candy",
+        "12. Unrestricted", 276,
+        "[OUT OF STANDARD 2025] Obtained from a Crimbo event source. Check the KoL wiki for current acquisition details.",
+        "Summons Crimbo candy items. Synergizes with Sweet Synthesis for candy-to-buff conversion."
+    );
+    add("Unaccompanied Miner", "Unaccompanied Miner",
+        "12. Unrestricted", 277,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Mining-related skill. Provides resources or combat utility. Check wiki for current effects."
+    );
+    add("Volcanometeor Showeruption", "Volcanometeor Showeruption",
+        "12. Unrestricted", 278,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Volcano/meteor-themed combat skill dealing significant damage. Check wiki for current stats."
+    );
+    add("Lunch Break", "Lunch Break",
+        "12. Unrestricted", 279,
+        "[OUT OF STANDARD 2025] Obtained from a special path or IotM source. Check the KoL wiki for current acquisition details.",
+        "Provides a mid-run rest or food-related benefit. Check wiki for current effects."
+    );
+    add("Offensive Joke", "Offensive Joke",
+        "12. Unrestricted", 280,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Stuns, delevels, or damages a monster with a joke. Combat utility skill."
+    );
+    add("Managerial Manipulation", "Managerial Manipulation",
+        "12. Unrestricted", 281,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Manipulation-based skill with office/management theme. Check wiki for current effects."
+    );
+    add("Natural Born Skeleton Killer", "Natural Born Skeleton Killer",
+        "12. Unrestricted", 282,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Provides bonus damage or effects against skeleton enemies. Check wiki for current utility."
+    );
+    add("Master of the Surprising Fist", "Master of the Surprising Fist",
+        "12. Unrestricted", 283,
+        "Obtained from completing the Way of the Surprising Fist challenge path. Unlocks after a WotSF ascension.",
+        "Provides combat bonuses when fighting unarmed. Synergizes with Kung Fu Hustler. Check wiki for full effects."
+    );
+    add("Torment Plant", "Torment Plant",
+        "12. Unrestricted", 284,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Plants a torment plant that deals damage over time or provides a battlefield effect. Check wiki."
+    );
+    add("Pinch Ghost", "Pinch Ghost",
+        "12. Unrestricted", 285,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Pinches a ghost enemy for damage or a special effect. Useful against ghost-type monsters."
+    );
+    add("Tattle", "Tattle",
+        "12. Unrestricted", 286,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Reveals information about a monster or provides a combat effect. Check wiki for current utility."
+    );
+    add("Frigidalmatian", "Frigidalmatian",
+        "12. Unrestricted", 287,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Cold-themed dalmatian combat or familiar skill. Check wiki for current effects."
+    );
+    add("Deep Dark Visions", "Deep Dark Visions",
+        "12. Unrestricted", 288,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate or special IotM source. Check the KoL wiki for current acquisition details.",
+        "Vision-based skill providing buffs or combat effects from deep/dark encounters. Check wiki."
+    );
+    add("Shrap", "Shrap",
+        "12. Unrestricted", 289,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Shrapnel-based combat skill dealing damage. Check wiki for current stats and utility."
+    );
+    add("Psychokinetic Hug", "Psychokinetic Hug",
+        "12. Unrestricted", 290,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate or special source. Check the KoL wiki for current acquisition details.",
+        "Psychic hug that deals damage or provides a buff. Check wiki for current effects."
+    );
+    add("Sloppy Secrets", "Sloppy Secrets",
+        "12. Unrestricted", 291,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Reveals monster secrets or provides combat advantage. Check wiki for current utility."
+    );
+    add("Alien Source Code", "Alien Source Code",
+        "12. Unrestricted", 292,
+        "[OUT OF STANDARD 2025] Obtained from the Spacegate IOTM or related source. Check the KoL wiki for current acquisition details.",
+        "Alien-themed code skill providing tech-based effects. Check wiki for current stats."
+    );
+    add("Belch The Rainbow", "Belch The Rainbow",
+        "12. Unrestricted", 293,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Belches a rainbow dealing prismatic elemental damage. Fun and potentially useful for elemental resistance tests."
+    );
+    add("Intimidating Mien", "Intimidating Mien",
+        "12. Unrestricted", 294,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Intimidates a monster reducing its stats or effectiveness. Check wiki for current effects."
+    );
+    add("Mathematical Precision", "Mathematical Precision",
+        "12. Unrestricted", 295,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate or special source. Check the KoL wiki for current acquisition details.",
+        "Provides precision-based bonus to hit or damage. Check wiki for current stats."
+    );
+    add("Ruthless Efficiency", "Ruthless Efficiency",
+        "12. Unrestricted", 296,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate or special source. Check the KoL wiki for current acquisition details.",
+        "Efficiency-based passive or active skill. Check wiki for current effects."
+    );
+    add("Speluck", "Speluck",
+        "12. Unrestricted", 297,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Luck-based spell skill providing random beneficial effects. Check wiki for current utility."
+    );
+    add("Garbage Nova", "Garbage Nova",
+        "12. Unrestricted", 298,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate or special source. Check the KoL wiki for current acquisition details.",
+        "Nova-level garbage explosion dealing high damage. Check wiki for current stats."
+    );
+    add("Dinsey Operations Expert", "Dinsey Operations Expert",
+        "12. Unrestricted", 299,
+        "[OUT OF STANDARD 2025] Obtained from the Dinsey World event or related source. Check the KoL wiki for current acquisition details.",
+        "Expertise in Dinsey World operations providing passive bonuses. Check wiki for current effects."
+    );
+    add("Rotten Memories", "Rotten Memories",
+        "12. Unrestricted", 300,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Memory-based skill providing combat or passive effects. Check wiki for current utility."
+    );
+    add("Healing Salve", "Healing Salve",
+        "12. Unrestricted", 301,
+        "[OUT OF STANDARD 2025] Obtained from a Deck of Every Card or special source. Check the KoL wiki for current acquisition details.",
+        "Heals HP in or out of combat. Check wiki for heal amount and MP cost."
+    );
+    add("Dark Ritual", "Dark Ritual",
+        "12. Unrestricted", 302,
+        "[OUT OF STANDARD 2025] Obtained from a Deck of Every Card or special source. Check the KoL wiki for current acquisition details.",
+        "Dark ritual providing mana or a powerful buff. Check wiki for current effects."
+    );
+    add("[16025]Lightning Bolt", "Lightning Bolt (lightning milk, skill #16025)",
+        "12. Unrestricted", 303,
+        "[OUT OF STANDARD 2025] Use a lightning milk item to learn this skill. Check the KoL wiki for the current source of lightning milk. Costs 1 bolt of Lightning per cast (consumed from inventory, not MP).",
+        "Deals 1 damage on the first two casts in a combat, then 5,000 damage on the third cast. Unique gimmick -- plan your combat around the three-cast trigger. Note: a second unrelated Lightning Bolt (skill #138) exists from the Deck of Every Card."
+    );
+    add("[138]Lightning Bolt", "Lightning Bolt (Deck of Every Card, skill #138)",
+        "12. Unrestricted", 303,
+        "[OUT OF STANDARD 2025] Memorize the spell from the Lightning Bolt (R) card drawn from a Deck of Every Card (IotM). Can also be learned from a gift card even without owning the deck. Costs 1 red mana per cast (consumed from inventory).",
+        "Deals ~3,000 damage per cast. One of the highest reliable single-hit damage options in the game. Great combat finisher in unrestricted. Note: a second unrelated Lightning Bolt (skill #16025) exists from lightning milk."
+    );
+    add("Pyromania", "Pyromania",
+        "12. Unrestricted", 304,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate reward book or special source. Check the KoL wiki for current acquisition details.",
+        "Fire-themed passive or active skill. Check wiki for current effects and utility."
+    );
+    add("Firegate", "Firegate",
+        "12. Unrestricted", 305,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate reward book or special source. Check the KoL wiki for current acquisition details.",
+        "Creates a firegate providing hot damage or a barrier. Check wiki for current effects."
+    );
+    add("Perfect Freeze", "Perfect Freeze",
+        "12. Unrestricted", 306,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate reward book or special source. Check the KoL wiki for current acquisition details.",
+        "Freezes a monster or provides cold-based effects. Check wiki for current stats."
+    );
+    add("Beardfreeze", "Beardfreeze",
+        "12. Unrestricted", 307,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Beard-based freeze skill with cold effects. Check wiki for current utility."
+    );
+    add("Frost Bite", "Frost Bite",
+        "12. Unrestricted", 308,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate reward book or special source. Check the KoL wiki for current acquisition details.",
+        "Cold bite attack dealing frost damage. Check wiki for current stats."
+    );
+    add("Shivering Monkey Technique", "Shivering Monkey Technique",
+        "12. Unrestricted", 309,
+        "[OUT OF STANDARD 2025] Obtained from a special path or source. Check the KoL wiki for current acquisition details.",
+        "Monkey-themed martial arts technique. Check wiki for current combat effects."
+    );
+    add("Communism!", "Communism!",
+        "12. Unrestricted", 310,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Revolutionary skill providing shared benefits or combat effects. Check wiki for current utility."
+    );
+    add("Astute Angler", "Astute Angler",
+        "12. Unrestricted", 311,
+        "[OUT OF STANDARD 2025] Obtained from a special fishing-related source. Check the KoL wiki for current acquisition details.",
+        "Fishing expertise providing item or combat bonuses. Check wiki for current effects."
+    );
+    add("Eldritch Intellect", "Eldritch Intellect",
+        "12. Unrestricted", 312,
+        "[OUT OF STANDARD 2025] Obtained from an Eldritch Horror event source. Check the KoL wiki for current acquisition details.",
+        "Eldritch-themed intellect boost. Check wiki for current stats and effects."
+    );
+    add("Licorice Rope", "Licorice Rope",
+        "12. Unrestricted", 313,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate or special source. Check the KoL wiki for current acquisition details.",
+        "Licorice-themed rope skill for entangling or dealing damage. Check wiki for current utility."
+    );
+    add("Fifteen Minutes of Flame", "Fifteen Minutes of Flame",
+        "12. Unrestricted", 314,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Fifteen-minute flame buff dealing hot damage or providing a hot bonus. Check wiki."
+    );
+    add("Ceci N'Est Pas Un Chapeau", "Ceci N'Est Pas Un Chapeau",
+        "12. Unrestricted", 315,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Surrealist hat-themed skill. Check wiki for current effects and what it actually does."
+    );
+    add("Stack Lumps", "Stack Lumps",
+        "12. Unrestricted", 316,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Stacks lumps for a progressive damage or buff effect. Check wiki for current utility."
+    );
+    add("Quantum Movement", "Quantum Movement",
+        "12. Unrestricted", 317,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate or special source. Check the KoL wiki for current acquisition details.",
+        "Quantum-themed movement skill providing initiative or evasion. Check wiki for current stats."
+    );
+    add("Eternal Flame", "Eternal Flame",
+        "12. Unrestricted", 318,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Eternal flame buff providing ongoing hot damage or resistance. Check wiki for current effects."
+    );
+    add("Meteor Lore", "Meteor Lore",
+        "12. Unrestricted", 319,
+        "[OUT OF STANDARD 2025] Obtained from a Spacegate reward book or special source. Check the KoL wiki for current acquisition details.",
+        "Knowledge of meteors providing buffs or combat bonuses. Part of the meteor-themed skill family. Check wiki."
+    );
+    add("Army of Toddlers", "Army of Toddlers",
+        "12. Unrestricted", 320,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Summons an army of toddlers for combat assistance or damage. Check wiki for current effects."
+    );
+    add("Tiki Mixology", "Tiki Mixology",
+        "12. Unrestricted", 321,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Tiki-themed mixology skill providing booze crafting or buff bonuses. Check wiki for current utility."
+    );
+    add("Implode Universe", "Implode Universe",
+        "12. Unrestricted", 322,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Universe implosion skill dealing massive damage. Check wiki for cost, cooldown, and utility."
+    );
+    add("Ashes and Soot", "Ashes and Soot",
+        "12. Unrestricted", 323,
+        "[OUT OF STANDARD 2025] Obtained from a special source. Check the KoL wiki for current acquisition details.",
+        "Ash and soot-themed skill providing hot damage or resistance. Check wiki for current effects."
+    );
+
+    // ── CATEGORY 12: Missing Tier List Skills (were dropped) ────
+
+    add("Chubby and Plump", "Chubby and Plump",
+        "12. Unrestricted", 324,
+        "[OUT OF STANDARD 2025] Buy The Night Before Crimbo Ch. 6 skillbook from the mall (~5,700,000 meat). Crimbo 2020.",
+        "Summons 1 Chubby and Plump bar/day (50 MP). Gives 50 turns of +50% max HP/MP. More useful in unrestricted where Sweet Synthesis makes candy valuable."
+    );
+    add("Ancient Crymbo Lore", "Ancient Crymbo Lore",
+        "12. Unrestricted", 325,
+        "[OUT OF STANDARD 2025] Buy the Crymbich Manuscript from the mall (~780,000 meat). Crimbo 2021.",
+        "+3 substats/combat (passive) -- but ONLY active in December. Do not perm this outside of December. Very cheap if it happens to be December."
+    );
+
+    // Crimbo Training skills from Crimbo 2022
+    add("Crimbo Training: First Aid Technician", "Crimbo Training: First Aid Technician",
+        "12. Unrestricted", 326,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "First aid-themed passive or active skill from the Crimbo 2022 train event. Check wiki for current effects."
+    );
+    add("Crimbo Training: Passenger Greeter", "Crimbo Training: Passenger Greeter",
+        "12. Unrestricted", 327,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Passenger greeting skill from Crimbo 2022. Check wiki for current effects."
+    );
+    add("Crimbo Training: Concierge", "Crimbo Training: Concierge",
+        "12. Unrestricted", 328,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Concierge skill from Crimbo 2022. Check wiki for current effects."
+    );
+    add("Crimbo Training: Track Switcher", "Crimbo Training: Track Switcher",
+        "12. Unrestricted", 329,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Track switching skill from Crimbo 2022. Check wiki for current effects."
+    );
+    add("Crimbo Training: Bartender", "Crimbo Training: Bartender",
+        "12. Unrestricted", 330,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Bartending skill from Crimbo 2022 -- may provide cocktailcrafting bonuses. Check wiki for current effects."
+    );
+    add("Crimbo Training: Waiter", "Crimbo Training: Waiter",
+        "12. Unrestricted", 331,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Waiting skill from Crimbo 2022. Check wiki for current effects."
+    );
+    add("Crimbo Training: Coal Taster", "Crimbo Training: Coal Taster",
+        "12. Unrestricted", 332,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Coal tasting skill from Crimbo 2022. Check wiki for current effects."
+    );
+    add("Crimbo Training: Dessert Steward", "Crimbo Training: Dessert Steward",
+        "12. Unrestricted", 333,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Dessert stewardship skill from Crimbo 2022 -- may provide food-related bonuses. Check wiki."
+    );
+    add("Crimbo Training: Night Watchman", "Crimbo Training: Night Watchman",
+        "12. Unrestricted", 334,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Night watchman skill from Crimbo 2022. Check wiki for current effects."
+    );
+    add("Crimbo Training: Sanitation Consultant", "Crimbo Training: Sanitation Consultant",
+        "12. Unrestricted", 335,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Sanitation skill from Crimbo 2022. Check wiki for current effects."
+    );
+    add("Crimbo Training: Graffiti Censor", "Crimbo Training: Graffiti Censor",
+        "12. Unrestricted", 336,
+        "[OUT OF STANDARD 2025] Complete the corresponding Crimbo 2022 training task. Check the KoL wiki for current availability.",
+        "Graffiti censoring skill from Crimbo 2022. Check wiki for current effects."
+    );
+
+    // Annual / Special Event Skills
+    add("Chitinous Soul", "Chitinous Soul",
+        "12. Unrestricted", 337,
+        "[OUT OF STANDARD 2025] Obtained from a special path or event. Check the KoL wiki for current acquisition details.",
+        "Chitin-based soul skill providing armor or resistance. Check wiki for current effects."
+    );
+    add("Just the Facts", "Just the Facts",
+        "12. Unrestricted", 338,
+        "[OUT OF STANDARD 2025] Obtained from a detective-themed path or event. Check the KoL wiki for current acquisition details.",
+        "Fact-based passive providing combat or info bonuses. Check wiki for current utility."
+    );
+    add("Too Cool", "Too Cool",
+        "12. Unrestricted", 339,
+        "[OUT OF STANDARD 2025] Obtained from a summer camp or special event. Check the KoL wiki for current acquisition details.",
+        "Cool passive providing some bonus. Check wiki for current effects."
+    );
+    add("Attract Snakes", "Attract Snakes",
+        "12. Unrestricted", 340,
+        "[OUT OF STANDARD 2025] Obtained from a summer camp or special event. Check the KoL wiki for current acquisition details.",
+        "Attracts snakes providing some combat or item effect. Check wiki for current utility."
+    );
+    add("Hide From Seekers", "Hide From Seekers",
+        "12. Unrestricted", 341,
+        "[OUT OF STANDARD 2025] Obtained from a summer camp or special event. Check the KoL wiki for current acquisition details.",
+        "Hides from seekers providing a combat evasion effect. Check wiki for current utility."
+    );
+    add("Reindeer Games", "Reindeer Games",
+        "12. Unrestricted", 342,
+        "[OUT OF STANDARD 2025] Obtained from a holiday event. Check the KoL wiki for current acquisition details.",
+        "Reindeer-themed games skill providing holiday bonuses. Check wiki for current effects."
+    );
+    add("Master Egg Hunter", "Master Egg Hunter",
+        "12. Unrestricted", 343,
+        "[OUT OF STANDARD 2025] Obtained from a holiday egg hunt event. Check the KoL wiki for current acquisition details.",
+        "Expert egg hunting skill providing item find bonuses. Check wiki for current effects."
+    );
+    add("Holiday Multitasking", "Holiday Multitasking",
+        "12. Unrestricted", 344,
+        "[OUT OF STANDARD 2025] Obtained from a holiday event. Check the KoL wiki for current acquisition details.",
+        "Multitasking during holidays providing efficiency bonuses. Check wiki for current effects."
+    );
+    add("SLEEP(5)", "SLEEP(5)",
+        "12. Unrestricted", 345,
+        "[OUT OF STANDARD 2025] Crimbo 2014 Crimbot skill. Obtained by assembling specific Crimbot ROM combinations.",
+        "Robot sleep skill causing a monster or effect delay. Check wiki for current utility in Crimbot context."
+    );
+    add("OVERCLOCK(10)", "OVERCLOCK(10)",
+        "12. Unrestricted", 346,
+        "[OUT OF STANDARD 2025] Crimbo 2014 Crimbot skill. Obtained by assembling specific Crimbot ROM combinations.",
+        "Overclocks robot capabilities providing speed or damage bonus. Check wiki for current effects."
+    );
+    add("STATS+++", "STATS+++",
+        "12. Unrestricted", 347,
+        "[OUT OF STANDARD 2025] Crimbo 2014 Crimbot skill. Obtained by assembling specific Crimbot ROM combinations.",
+        "Massively boosts stats. Check wiki for exact stat bonuses and context."
+    );
+    add("Holiday Burial Knowledge", "Holiday Burial Knowledge",
+        "12. Unrestricted", 348,
+        "[OUT OF STANDARD 2025] Obtained from a holiday event. Check the KoL wiki for current acquisition details.",
+        "Knowledge of holiday burial practices providing some bonus. Check wiki for current effects."
+    );
+
+    // Drunken Sailor skills (PirateRealm or special pirate event)
+    add("Let's Beat Up This Drunken Sailor", "Let us Beat Up This Drunken Sailor",
+        "12. Unrestricted", 349,
+        "[OUT OF STANDARD 2025] Obtained from PirateRealm or a pirate-themed event. Check the KoL wiki for current acquisition details.",
+        "Combat skill involving beating up a drunken sailor. Check wiki for damage and effects."
+    );
+    add("I'm Smarter Than a Drunken Sailor", "I am Smarter Than a Drunken Sailor",
+        "12. Unrestricted", 350,
+        "[OUT OF STANDARD 2025] Obtained from PirateRealm or a pirate-themed event. Check the KoL wiki for current acquisition details.",
+        "Intelligence-based passive providing bonuses. Check wiki for current effects."
+    );
+    add("Look At That Drunken Sailor Dance", "Look At That Drunken Sailor Dance",
+        "12. Unrestricted", 351,
+        "[OUT OF STANDARD 2025] Obtained from PirateRealm or a pirate-themed event. Check the KoL wiki for current acquisition details.",
+        "Dancing sailor skill providing combat or initiative effects. Check wiki for current utility."
+    );
+    add("Who's Going to Pay This Drunken Sailor?", "Who is Going to Pay This Drunken Sailor",
+        "12. Unrestricted", 352,
+        "[OUT OF STANDARD 2025] Obtained from PirateRealm or a pirate-themed event. Check the KoL wiki for current acquisition details.",
+        "Payment-themed skill providing meat or item bonuses. Check wiki for current effects."
+    );
+    add("Only Dogs Love a Drunken Sailor", "Only Dogs Love a Drunken Sailor",
+        "12. Unrestricted", 353,
+        "[OUT OF STANDARD 2025] Obtained from PirateRealm or a pirate-themed event. Check the KoL wiki for current acquisition details.",
+        "Dog-and-sailor themed skill. Check wiki for current effects and utility."
     );
 
 }
