@@ -140,13 +140,13 @@ Top 3 un-permed in this category (7 remaining):
 | File | Purpose |
 |------|---------|
 | `HC_Perm_Advisor.ash` | Main script — all logic, display, and perm detection. ~383 lines. |
-| `HC_Perm_Advisor_data.ash` | Skill database — all 154 skills with priority, source, and notes. ~855 lines. Edit this file to add or change skills. |
+| `HC_Perm_Advisor_data.ash` | Skill database — all 283 skills with priority, source, and notes. ~1,547 lines. Edit this file to add or change skills. |
 
 ---
 
 ## Skill Coverage
 
-The script covers **154 skills** across all 13 tier categories, including:
+The script covers **283 skills** across all 13 tier categories, including:
 
 **Standard-legal skills:**
 - **Class run skills** — all six classes (SC, DB, AT, PM, TT, SA) with the level required
@@ -169,7 +169,7 @@ The script covers **154 skills** across all 13 tier categories, including:
 
 > Skills costing over 200M meat (Sweet Synthesis ~418M, Calculate the Universe ~500M) are noted in the category footer but not listed as recommendations.
 
-**50 of the 154 skills are Out of Standard 2025** and are flagged with `[OUT OF STANDARD 2025]` in their How to Get text. These can still be HC-permed in unrestricted or non-Standard paths.
+**143 of the 283 skills are Out of Standard 2025** and are flagged with `[OUT OF STANDARD 2025]` in their How to Get text. These can still be HC-permed in unrestricted or non-Standard paths.
 
 ---
 
