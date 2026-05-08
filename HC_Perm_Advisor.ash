@@ -152,7 +152,7 @@ void print_menu(int total) {
     print("  11  marginal     -- Fractional turn savers; marginal gains", "black");
     print("  12  unrestricted -- Non-standard path highlights (not usable in Standard)", "black");
     print("", "");
-    print("   0  top          -- Global top 5 by overall priority", "black");
+    print("   0  top          -- Top recommendations: class skills, others, Dread (all globally ranked)", "black");
     print("      all          -- Full ranked list, grouped by category", "black");
     print("", "");
 }
@@ -204,55 +204,73 @@ void show_top(SkillData[int] needed) {
         return;
     }
 
-    // Walk the full priority-sorted list and assign global rank numbers.
-    // Dread skills are separated into their own section but keep their
-    // global rank so the user can see where they sit in the overall order.
-    // e.g. if Dread skills are #2 and #4 overall, they display as #2 and #4.
+    // Split into three groups, all keeping their global rank numbers:
+    //   Class skills  -- obtained by playing a class run
+    //   Other skills  -- special sources (mall, PvP, events, IotMs, etc.)
+    //   Dread skills  -- require coordinating two classes in a Dread run
+    // Global rank is continuous across all three sections so the user
+    // can see exactly where each skill sits in the overall priority order.
 
-    SkillData[int] dread_skills;
-    int[int]       dread_ranks;
-    SkillData[int] solo_skills;
-    int[int]       solo_ranks;
-    int dcount = 0;
-    int scount = 0;
-    int rank    = 1;
+    SkillData[int] class_skills;  int[int] class_ranks;  int ccount = 0;
+    SkillData[int] other_skills;  int[int] other_ranks;  int ocount = 0;
+    SkillData[int] dread_skills;  int[int] dread_ranks;  int dcount = 0;
+    int rank = 1;
 
     foreach i, sd in needed {
         if (index_of(sd.how_to_get, "Dread skill") >= 0) {
             dread_skills[dcount] = sd;
             dread_ranks[dcount]  = rank;
             dcount += 1;
+        } else if (index_of(sd.how_to_get, "Play a") >= 0) {
+            class_skills[ccount] = sd;
+            class_ranks[ccount]  = rank;
+            ccount += 1;
         } else {
-            solo_skills[scount] = sd;
-            solo_ranks[scount]  = rank;
-            scount += 1;
+            other_skills[ocount] = sd;
+            other_ranks[ocount]  = rank;
+            ocount += 1;
         }
         rank += 1;
     }
 
-    // Show top 5 solo skills with their global rank numbers
-    print("Top skills (solo -- no class coordination needed):", "black");
+    // Section 1: Class run skills (top 5)
+    print("-- Class run skills (top 5) --", "blue");
     print("", "");
-    if (scount == 0) {
-        print("All remaining skills are Dread skills!", "green");
+    if (ccount == 0) {
+        print("  All class run skills are permed!", "green");
     } else {
-        int sdisplay = min(5, scount);
-        for i from 0 to sdisplay - 1 {
-            print_skill(solo_ranks[i], solo_skills[i]);
+        int cdisplay = min(5, ccount);
+        for i from 0 to cdisplay - 1 {
+            print_skill(class_ranks[i], class_skills[i]);
         }
-        if (scount > 5) {
-            print("... and " + (scount - 5) + " more solo skills remaining.", "gray");
-            print("Run 'call HC_Perm_Advisor.ash all' for the full list.", "gray");
+        if (ccount > 5) {
+            print("... and " + (ccount - 5) + " more class skills remaining.", "gray");
         }
     }
 
-    // Show top 3 Dread skills with their global rank numbers
-    if (dcount > 0) {
-        print("", "");
-        print("-------------------------------------------------------------", "blue");
-        print("  Dread skills -- global rank shown, class coordination needed", "blue");
-        print("-------------------------------------------------------------", "blue");
-        print("", "");
+    // Section 2: Other skills (top 3)
+    print("", "");
+    print("-- Other skills (top 3) --", "blue");
+    print("", "");
+    if (ocount == 0) {
+        print("  All other skills are permed!", "green");
+    } else {
+        int odisplay = min(3, ocount);
+        for i from 0 to odisplay - 1 {
+            print_skill(other_ranks[i], other_skills[i]);
+        }
+        if (ocount > 3) {
+            print("... and " + (ocount - 3) + " more other skills remaining.", "gray");
+        }
+    }
+
+    // Section 3: Dread skills (top 3)
+    print("", "");
+    print("-- Dread skills (top 3, require class coordination) --", "blue");
+    print("", "");
+    if (dcount == 0) {
+        print("  All Dread skills are permed!", "green");
+    } else {
         int ddisplay = min(3, dcount);
         for i from 0 to ddisplay - 1 {
             print_skill(dread_ranks[i], dread_skills[i]);
@@ -263,7 +281,8 @@ void show_top(SkillData[int] needed) {
     }
 
     print("", "");
-    print("Total un-permed: " + total + " (" + scount + " solo, " + dcount + " Dread)", "gray");
+    print("Total un-permed: " + total + " (" + ccount + " class, " + ocount + " other, " + dcount + " Dread)", "gray");
+    print("Global rank numbers are continuous -- #1 is highest overall priority.", "gray");
 }
 
 // ---- SHOW: CATEGORY ----------------------------------------
@@ -340,7 +359,11 @@ void show_all(SkillData[int] needed) {
     cat_order[12] = "12. Unrestricted";
 
     int global_rank = 1;
+    int cap = 100;
+    boolean cap_hit = false;
+
     foreach ci, cat in cat_order {
+        if (cap_hit) break;
         SkillData[int] cat_skills;
         int ccount = 0;
         foreach i, sd in needed {
@@ -354,9 +377,21 @@ void show_all(SkillData[int] needed) {
         print("-- " + cat + " (" + ccount + " remaining) --", "blue");
         print("", "");
         foreach i, sd in cat_skills {
+            if (global_rank > cap) {
+                cap_hit = true;
+                break;
+            }
             print_skill(global_rank, sd);
             global_rank += 1;
         }
+    }
+
+    if (cap_hit) {
+        int remaining_count = total - cap;
+        print("", "");
+        print("--- Showing first " + cap + " of " + total + " un-permed skills ---", "gray");
+        print("    " + remaining_count + " more skills not shown.", "gray");
+        print("    Browse by category (e.g. 'call HC_Perm_Advisor.ash 12') to see the rest.", "gray");
     }
 
     print("NOTE: Category 12 skills over 200M (Sweet Synthesis ~418M, Calculate the Universe ~500M)", "gray");
